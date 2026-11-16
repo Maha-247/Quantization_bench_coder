@@ -1,0 +1,25 @@
+{
+  "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "precision": "awq",
+  "engine": "vllm",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "prompt_tokens": 512,
+  "new_tokens": 64,
+  "trials": 5,
+  "ttft_ms": 15.87,
+  "tbt_ms": 4.26,
+  "decode_tokens_per_sec": 234.7,
+  "repeats": 3,
+  "ttft_ms_all": [
+    15.87,
+    16.76,
+    15.6
+  ],
+  "tbt_ms_all": [
+    4.27,
+    4.26,
+    4.24
+  ],
+  "ttft_spread_pct": 7.3,
+  "tbt_spread_pct": 0.7
+}

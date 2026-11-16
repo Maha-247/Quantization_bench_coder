@@ -1,0 +1,11 @@
+{
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "precision": "bf16",
+  "engine": "vllm",
+  "benchmark": "HumanEval+",
+  "num_problems": 164,
+  "decoding": "greedy",
+  "max_new_tokens": 768,
+  "humaneval_pass@1": 0.72,
+  "humaneval_plus_pass@1": 0.677
+}
