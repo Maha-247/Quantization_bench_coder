@@ -111,10 +111,13 @@ def main(model: str = "Qwen/Qwen2.5-Coder-1.5B-Instruct", precision: str = "bf16
     result = evaluate.remote(model, precision)
     name = model.split("/")[-1]
     # Keep every answer, so wrong ones can be inspected later.
-    with open(f"samples_{name}_{precision}.jsonl", "w") as f:
+    import os
+    os.makedirs("samples", exist_ok=True)
+    os.makedirs("results/accuracy", exist_ok=True)
+    with open(f"samples/samples_{name}_{precision}.jsonl", "w") as f:
         for s in result.pop("samples"):
             f.write(json.dumps(s) + "\n")
     print(result.pop("evalplus_log_tail"))
     print(json.dumps(result, indent=2))
-    with open(f"results_acc_{name}_{precision}.json", "w") as f:
+    with open(f"results/accuracy/results_acc_{name}_{precision}.json", "w") as f:
         json.dump(result, f, indent=2)

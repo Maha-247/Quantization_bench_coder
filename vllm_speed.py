@@ -9,6 +9,7 @@ in several independent containers (--repeats, default 3) and the median is repor
     modal run vllm_speed.py --model Qwen/Qwen2.5-Coder-7B-Instruct --precision fp8 --prompt-tokens 2048
 """
 import json
+from unittest import result
 import modal
 
 app = modal.App("quant-coder-bench")
@@ -117,5 +118,7 @@ def main(model: str = "Qwen/Qwen2.5-Coder-1.5B-Instruct", precision: str = "bf16
     })
     print(json.dumps(result, indent=2))
     name = model.split("/")[-1]
-    with open(f"results_speed_{name}_{precision}_p{prompt_tokens}.json", "w") as f:
+    import os
+    os.makedirs("results/speed", exist_ok=True)
+    with open(f"results/speed/results_speed_{name}_{precision}_p{prompt_tokens}.json", "w") as f:
         json.dump(result, f, indent=2)
